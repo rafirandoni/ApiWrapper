@@ -1,5 +1,7 @@
 <?php
 
+namespace RafiRandoni\ApiWrapper;
+
 /**
  * TVdb Wrapper
  *
@@ -38,17 +40,18 @@ class TvdbWrapper {
         $data = file_get_contents($url);
         $xml = simplexml_load_string($data);
 
+        $this->datas = $data;
+
         if ($xml) {
             $this->mirror_path = $xml->Mirror->mirrorpath;
             return true;
         }
 
         return false;
-
     }
 
 }
 
-$tvdb = new TvdbWrapper('9DAF49C96CBF8DAC', 'cache');
-var_dump($tvdb->_getMirror());
+$tvdb = new TvdbWrapper('YOURAPIKEY', 'cache');
+var_dump($tvdb);
 ?>
